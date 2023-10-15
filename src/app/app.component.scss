@@ -1,0 +1,26 @@
+.cover-header .cover-title,
+.section-header {
+  font-family: "Elegant";
+}
+
+.and-separator {
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+  background-color: #e3735e;
+  background-image: radial-gradient(#eeaea3 0.5px, #e78878 0.5px);
+  background-size: 10px 10px;
+}
+
+.box * {
+  color: white;
+}
+
+.cover-image {
+  background-image: url("../assets/images/cover.webp");
+  background-position: center;
+  background-position-x: -10rem;
+  height: 40rem;
+}
