@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  coverImgSrc = '../assets/images/cover.webp';
+  coverImgSrc = '../assets/images/cover.jpg';
   bgTexture = '../assets/images/nude.jpg';
 }

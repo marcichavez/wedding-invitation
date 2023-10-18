@@ -1,10 +1,10 @@
 <header class="hidden lg:flex justify-center space-x-4 text-center">
   <nav class="p-6 lg:text-black">
     <a href="#" class="text-sm mx-6 font-semibold leading-6 text-gray-900">
-      The Wedding
-    </a>
-    <a href="#" class="text-sm mx-6 font-semibold leading-6 text-gray-900">
       Gallery
+    </a>
+    <a href="#" class="text-lg mx-6 font-semibold leading-6 text-gray-900">
+      The Wedding
     </a>
     <a href="#" class="text-sm mx-6 font-semibold leading-6 text-gray-900">
       FAQs
@@ -12,23 +12,36 @@
   </nav>
 </header>
 <div class="lg:flex">
-  <div class="cover-image lg:w-2/3 md:w-full"></div>
-  <!-- <img [src]="coverImgSrc" class="md:w-auto md:h-fit lg:w-2/3" /> -->
-  <div class="box md:w-full lg:w-1/3">
-    <header class="text-center lg:hidden">
-      <nav class="p-6">
-        <a href="#" class="text-sm mx-6 font-semibold leading-6 text-gray-900">
-          About Us
-        </a>
-        <a href="#" class="text-sm mx-6 font-semibold leading-6 text-gray-900">
-          Gallery
-        </a>
-        <a href="#" class="text-sm mx-6 font-semibold leading-6 text-gray-900">
-          FAQs
-        </a>
-      </nav>
-    </header>
-
+  <div class="cover-image lg:w-2/3"></div>
+  <div class="mobile-cover-image md:w-full lg:hidden">
+    <img [src]="coverImgSrc" class="opacity-0" />
+  </div>
+  <!-- <img [src]="coverImgSrc"  /> -->
+  <header class="secondary-nav text-center lg:hidden sticky top-0">
+    <nav class="p-6 flex">
+      <a
+        href="#"
+        class="w-1/3 text-sm mx-3 font-semibold leading-6 text-gray-900"
+      >
+        Gallery
+      </a>
+      <a
+        href="#"
+        class="w-1/3 text-lg mx-3 font-semibold leading-6 text-gray-900"
+      >
+        The Wedding
+      </a>
+      <a
+        href="#"
+        class="w-1/3 text-sm mx-3 font-semibold leading-6 text-gray-900"
+      >
+        FAQs
+      </a>
+    </nav>
+  </header>
+  <div
+    class="box lg:mt-0 lg:pt-0 md:w-full md:mt-[-7rem] md:pt-[7rem] lg:w-1/3"
+  >
     <div class="w-full">
       <div class="cover-header mt-10 lg:mt-24 mb-16">
         <h1 class="cover-title text-center text-4xl">

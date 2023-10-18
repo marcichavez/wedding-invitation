@@ -12,15 +12,24 @@
   background-color: #e3735e;
   background-image: radial-gradient(#eeaea3 0.5px, #e78878 0.5px);
   background-size: 10px 10px;
+  // height: 100rem;
 }
 
-.box * {
+.box *,
+.secondary-nav * {
   color: white;
 }
 
 .cover-image {
-  background-image: url("../assets/images/cover.webp");
-  background-position: center;
-  background-position-x: -10rem;
-  height: 40rem;
+  background-image: url("../assets/images/cover.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  // min-height: 40rem;
+}
+
+.mobile-cover-image {
+  background-image: url("../assets/images/cover.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
 }
