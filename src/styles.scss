@@ -5,7 +5,8 @@
 
 @font-face {
   font-family: "Elegant";
-  src: url("assets/fonts/Allura-Regular.ttf") format("truetype");
+  src: url("assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,8 +18,16 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Signature";
+  src: url("assets/fonts/Quick\ Signature\ Personal\ Use.otf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
-  font-family: "Poiret";
+  font-family: "Elegant";
 }
 
 .accent {
