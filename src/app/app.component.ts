@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   coverImgSrc = '../assets/images/cover.jpg';
   bgTexture = '../assets/images/nude.jpg';
+
+  showForm = true;
+  nameFound = false;
 }
