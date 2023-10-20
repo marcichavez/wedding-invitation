@@ -1,27 +1,17 @@
-<header class="hidden lg:flex justify-center space-x-4 sticky top-0 bg-white">
-  <nav class="p-6 lg:text-black">
-    <a href="#" class="text-sm mx-6 leading-6 text-gray-900"> Gallery </a>
-    <a
-      href="#"
-      class="text-lg mx-6 font-black leading-6 text-gray-900"
-      (click)="showForm = !showForm"
-    >
-      The Wedding
-    </a>
-    <a href="#" class="text-sm mx-6 leading-6 text-gray-900"> FAQs </a>
-  </nav>
-</header>
-<div class="lg:flex">
-  <div class="cover-image lg:w-2/3"></div>
+<section class="lg:flex" *ngIf="false">
+  <!-- desktop cover-image -->
+  <div class="cover-image lg:w-2/3 lg:block hidden"></div>
+  <!-- mobile cover-image-->
   <div class="mobile-cover-image md:w-full lg:hidden">
     <img [src]="coverImgSrc" class="opacity-0" />
   </div>
-  <div class="box p-10 sm:p-20 pb-20 lg:w-1/3 sm:w-full">
+  <!-- right panel -->
+  <div class="box p-10 pb-20 lg:w-1/3 sm:w-full" [ngSwitch]="rightPanelState">
     <!-- You are invited -->
-    <div class="w-full" *ngIf="!showForm">
+    <div class="w-full" *ngSwitchCase="'default'">
       <h2 class="mb-10 opacity-80">YOU ARE INVITED</h2>
       <div class="cover-header mb-16">
-        <h1 class="cover-title text-4xl">
+        <h1 class="cover-title text-4xl font-light">
           MERRY JOY <br /><span class="p-2 and-separator">and</span>
           <br /><br />MARCI
         </h1>
@@ -29,12 +19,13 @@
       </div>
       <div class="date-location opacity-80">
         <p class="date">22 FEBRUARY 2025</p>
-        <p class="font-black">SAN PEDRO CALUNGSOD PARISH</p>
+        <p class="font-semibold">SAN PEDRO CALUNGSOD PARISH</p>
         <p class="mt-6 text-sm">392 DAYS 24 HRS 5 MIN 3 SEC</p>
       </div>
       <div class="text-right pt-20 rsvp">
         <button
-          class="w-32 h-32 rounded-full border-2 border-[#1e1e1e] text-3xl"
+          (click)="rightPanelState = 'rsvpForm'"
+          class="hover:animate-none animate-pulse w-32 h-32 rounded-full border-2 border-[#1e1e1e] text-3xl font-light"
         >
           RSVP
           <!-- <span class="rarr text-4xl">&rarr;</span> -->
@@ -43,13 +34,21 @@
     </div>
 
     <!-- RSVP Form -->
-    <div class="w-full" *ngIf="showForm">
+    <div class="w-full" *ngSwitchCase="'rsvpForm'">
+      <p
+        class="text-3xl mb-5 cursor-pointer"
+        (click)="rightPanelState = 'default'"
+      >
+        &larr;
+      </p>
       <h2 class="mb-10 opacity-80">
-        Please respond no later than <b>Feb 01, 2025</b>. We hope to celebrate
-        with you!
+        Please respond no later than
+        <span class="font-black">Feb 01, 2025</span>. We hope to celebrate with
+        you!
       </h2>
       <p class="text-sm opacity-80">
-        Type you name and look for your invitation
+        Verify your invitation. Type your name and secret code provided by the
+        couple.
       </p>
       <form class="pt-10">
         <div class="relative z-0 w-full mb-6 group">
@@ -57,35 +56,277 @@
             type="text"
             name="fullname"
             id="fullname"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none focus:outline-none focus:ring-0 peer"
             placeholder=" "
             required
           />
           <label
             for="fullname"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Lastname, Firstname
           </label>
         </div>
-        <div class="relative block">
-          <button
-            class="mt-10 w-2/3 border-2 border-[#1e1e1e] py-3 font-bold text-xs"
+
+        <div class="relative z-0 w-full mb-6 group">
+          <input
+            type="text"
+            name="secret_code"
+            id="secret_code"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-900 appearance-none focus:outline-none focus:ring-0 peer"
+            placeholder=" "
+            required
+          />
+          <label
+            for="secret_code"
+            class="peer-focus:font-medium absolute text-sm text-gray-900 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
-            Check my name
-          </button>
+            4 Digit Secret Code
+          </label>
         </div>
       </form>
+
+      <div class="relative block">
+        <button
+          class="mt-12 w-fit border-2 border-[#1e1e1e] py-3 px-5 font-medium text-sm flex"
+          (click)="verifyInvitation()"
+        >
+          {{ checkNameBtnLbl }}
+        </button>
+      </div>
+    </div>
+
+    <div class="w-full" *ngSwitchCase="'confirmationForm'">
+      <p
+        class="text-3xl mb-5 cursor-pointer"
+        (click)="rightPanelState = 'rsvpForm'"
+      >
+        &larr;
+      </p>
+      <h2 class="mb-10 opacity-80">
+        Please respond no later than
+        <span class="font-black">Feb 01, 2025</span>. We hope to celebrate with
+        you!
+      </h2>
+      <p class="text-sm opacity-80">
+        Hello, [Guest Name]! You are on our cherished guest list. Can you join
+        us for our wedding?
+      </p>
+      <div class="relative flex mt-5">
+        <button
+          class="w-1/2 border-b-2 border-[#1e1e1e] py-3 px-5 font-medium text-sm text-center hover:bg-gray-100"
+          (click)="verifyInvitation()"
+        >
+          Yes of course!
+        </button>
+        <button
+          class="opacity-40 hover:opacity-80 w-1/2 border-2 border-white py-3 px-5 font-medium text-sm text-center hover:bg-gray-100"
+          (click)="verifyInvitation()"
+        >
+          No sorry :(
+        </button>
+      </div>
+
+      <p class="text-sm opacity-80 pt-10 pb-4">
+        There are 3 others that are invited with you. Will they be able to come
+        too?
+        <br />
+        <span class="text-xs">(Uncheck box if they won't be able to come)</span>
+      </p>
+      <div class="flex items-center mb-2">
+        <input
+          id="default-checkbox"
+          type="checkbox"
+          value="true"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label
+          for="default-checkbox"
+          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >
+          Plus 1 Name
+        </label>
+      </div>
+      <div class="flex items-center mb-2">
+        <input
+          id="default-checkbox"
+          type="checkbox"
+          value="true"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label
+          for="default-checkbox"
+          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        >
+          Plus 1 Name
+        </label>
+      </div>
+
+      <button
+        class="mt-8 w-full py-3 px-5 font-medium text-sm text-center border-2 border-[#1e1e1e]"
+        (click)="verifyInvitation()"
+      >
+        Submit my response
+      </button>
+    </div>
+
+    <div class="w-full" *ngSwitchCase="'nameNotFound'">
+      <p
+        class="text-3xl mb-5 cursor-pointer"
+        (click)="rightPanelState = 'rsvpForm'"
+      >
+        &larr;
+      </p>
+      <p class="mb-10 opacity-80">
+        Sorry your name was not found on our guestlist. As you know, the venue
+        has a limited capacity and not inviting you on our wedding doesn't mean
+        that you don't mean to us. Hope we could catch up some other time!
+      </p>
+
+      <p class="text-xs mb-10">
+        We might mispell your name. If you think there is a mistake, kindly
+        message Merry Joy or Marci directly so we could update our list. ;)
+      </p>
+
+      <p
+        class="cursor-pointer hover:font-bold"
+        (click)="rightPanelState = 'default'"
+      >
+        Back to home
+      </p>
+    </div>
+  </div>
+</section>
+<section class="px-10 pt-10 pb-20 bg-[#1e1e1e]">
+  <div class="flex mb-10 border-b-2 border-white">
+    <h1 class="font-thin text-4xl text-white text-right w-full align-top">
+      <span class="text-sm">THE</span> GALLERY
+    </h1>
+  </div>
+
+  <div class="gallery grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid gap-4">
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="grid gap-4">
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="grid gap-4">
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="grid gap-4">
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="h-auto max-w-full rounded-lg"
+          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+          alt=""
+        />
+      </div>
     </div>
   </div>
 
-  <header
-    class="lg:hidden text-center space-x-4 sticky bottom-0-0 bg-[#212121]"
-  >
-    <nav class="py-6 text-white">
-      <a href="#" class="text-sm mx-6 leading-6"> Gallery </a>
-      <a href="#" class="text-sm mx-6 font-black leading-6"> The Wedding </a>
-      <a href="#" class="text-sm mx-6 leading-6"> FAQs </a>
-    </nav>
-  </header>
-</div>
+  <div class="dots flex justify-center pt-10">
+    <button class="border-2 border-white text-white py-4 px-7 text-sm">
+      LOAD MORE
+    </button>
+  </div>
+</section>
+
+<section class="flex bg-white ceremony-image text-white">
+  <div class="m-10 lg:w-1/2 z-10">
+    <p class="ml-2">XXXXXXXXX</p>
+    <h1 class="lg:text-9xl text-4xl font-black md:text-white">
+      SON OF YEGRAW BLOODNAVY
+    </h1>
+    <div class="w-32 border-2 border-white my-7"></div>
+    <div class="flex">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="1.5em"
+        viewBox="0 0 384 512"
+        class="pr-2 fill-white"
+      >
+        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
+        />
+      </svg>
+
+      <h1 class="text-xs lg:text-lg">THE PARAGON CITY, MULTI ISLAND, TEXAS</h1>
+    </div>
+  </div>
+</section>

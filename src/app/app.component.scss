@@ -1,11 +1,9 @@
-.cover-header .cover-title,
-.section-header {
-  font-family: "Elegant";
-}
-
 .cover-title {
   letter-spacing: 0.25rem;
-  font-weight: 900;
+}
+
+.signature {
+  font-family: "Signature";
 }
 
 .and-separator {
@@ -17,6 +15,7 @@
 
 .box {
   background-color: white;
+  max-width: 32rem;
   // border: 1px solid #e0e0e0;
 }
 
@@ -25,11 +24,20 @@
   color: #1e1e1e;
 }
 
+.ceremony-image {
+  background-image: url("../assets/images/couple.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
 .cover-image {
   background-image: url("../assets/images/cover.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
-  // min-height: 40rem;
+  background-size: contain;
+  min-height: 100vh;
+  background-attachment: fixed;
 }
 
 .mobile-cover-image {

@@ -11,4 +11,17 @@ export class AppComponent {
 
   showForm = true;
   nameFound = false;
+  verifyingInvitation = false;
+  checkNameBtnLbl = 'Check my name';
+
+  rightPanelState = 'nameNotFound';
+
+  verifyInvitation() {
+    this.verifyingInvitation = true;
+    this.checkNameBtnLbl = 'Browsing guestlists...';
+    setTimeout(() => {
+      this.rightPanelState = 'confirmationForm';
+      this.checkNameBtnLbl = 'Check my name';
+    }, 2000); // simulate a delay
+  }
 }
