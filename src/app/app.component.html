@@ -1,4 +1,4 @@
-<section class="lg:flex" *ngIf="false">
+<section class="lg:flex">
   <!-- desktop cover-image -->
   <div class="cover-image lg:w-2/3 lg:block hidden"></div>
   <!-- mobile cover-image-->
@@ -6,7 +6,7 @@
     <img [src]="coverImgSrc" class="opacity-0" />
   </div>
   <!-- right panel -->
-  <div class="box p-10 pb-20 lg:w-1/3 sm:w-full" [ngSwitch]="rightPanelState">
+  <div class="box p-10 pb-20 lg:w-1/3 md:w-full" [ngSwitch]="rightPanelState">
     <!-- You are invited -->
     <div class="w-full" *ngSwitchCase="'default'">
       <h2 class="mb-10 opacity-80">YOU ARE INVITED</h2>
@@ -307,10 +307,10 @@
 </section>
 
 <section class="flex bg-white ceremony-image text-white">
-  <div class="m-10 lg:w-1/2 z-10">
-    <p class="ml-2">XXXXXXXXX</p>
+  <div class="m-10 z-10">
+    <p>CEREMONY</p>
     <h1 class="lg:text-9xl text-4xl font-black md:text-white">
-      SON OF YEGRAW BLOODNAVY
+      SAN PEDRO CALUNGSOD PARISH
     </h1>
     <div class="w-32 border-2 border-white my-7"></div>
     <div class="flex">
@@ -326,7 +326,15 @@
         />
       </svg>
 
-      <h1 class="text-xs lg:text-lg">THE PARAGON CITY, MULTI ISLAND, TEXAS</h1>
+      <h1 class="text-xs lg:text-lg">106 SUMULONG HWY, ANTIPOLO, 1870 RIZAL</h1>
     </div>
+  </div>
+</section>
+
+<section class="flex bg-white text-[#1e1e1e] text-right">
+  <div class="m-10 z-10">
+    <p>RECEPTION</p>
+    <h1 class="lg:text-9xl text-4xl font-black">THE EMERALD EVENTS PLACE</h1>
+    <div class="w-32 border-2 border-[#1e1e1e] my-7 float-right"></div>
   </div>
 </section>
